@@ -10,20 +10,5 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface EmployeRepository extends JpaRepository<Employe,Long> {
-
-    Employe findByMatricule(String matricule);
-    List<Employe> findByNomAndPrenom(String nom, String prenom);
-    List<Employe> findByNomIgnoreCase(String nom);
-    List<Employe> findByDateEmbaucheBefore(LocalDate dateEmbauche);
-    List<Employe> findByDateEmbaucheAfter(LocalDate dateEmbauche);
-    List<Employe> findBySalaireGreaterThanOrderBySalaireDesc(Double Salaire);
-    @Query("SELECT e FROM employe e WHERE lower(e.prenom) = lower(:nomOuPrenom) OR lower(e.nom) = lower(:nomOuPrenom)")
-    List<Employe> findByNomOrPrenomAllIgnoreCase(@Param("nomOuPrenom") String nomOuPrenom);
-    Page<Employe> findByNomIgnoreCase(String nom, Pageable pageable);
-    @Query(value = "select * from employe " +
-            "WHERE salaire > (select avg(e2.salaire) from employe e2)"
-    , nativeQuery = true)
-    List<Employe> findEmployePlusRiches();
-
+public interface EmployeRepository extends BaseEmployeRepository<Employe> {
 }

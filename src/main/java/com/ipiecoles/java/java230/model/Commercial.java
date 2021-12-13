@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Entity
 public class Commercial extends Employe {
 
+	@OneToOne
+	private Employe employe;
 
 	private Double caAnnuel = 0d;
 
