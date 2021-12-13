@@ -1,8 +1,13 @@
 package com.ipiecoles.java.java230.model;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.joda.time.LocalDate;
 
+import javax.persistence.*;
+
+@Entity
 public class Commercial extends Employe {
+
 
 	private Double caAnnuel = 0d;
 
